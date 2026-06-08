@@ -1,4 +1,4 @@
-# priority_dict
+# priority-dict
 
 A high-performance, dictionary-like structure that maps unique keys to numeric priorities. `PriorityDict` combines the fast lookup of a hash map with the efficient priority ordering of a binary min-heap, allowing you to instantly retrieve or update any item while maintaining a constantly sorted order of the lowest priority elements.
 
@@ -51,7 +51,7 @@ pip install -e .
 You can use standard public methods or interface with the object exactly like a native Python dictionary.
 
 ```python
-from priority_dict.core import PriorityDict
+from priority_dict import PriorityDict
 
 # Initialize a PriorityDict with string keys and integer priorities
 pq = PriorityDict[str, int]()
