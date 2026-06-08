@@ -16,6 +16,7 @@ Given $n$ as the number of entries in the structure:
 | Operation | Time Complexity | Description |
 | --- | --- | --- |
 | `get` / `contains` / `__contains__` | $O(1)$ | Instant lookup via index mapping |
+| `peek_min` | $O(1)$ | View the minimum element without removal |
 | `put` / `__setitem__` | $O(\log n)$ | Insertion or priority updates |
 | `update_priority` | $O(\log n)$ | Dynamic adjustment of an existing key's weight |
 | `pop_min` | $O(\log n)$ | Extracted root priority restoration |
@@ -65,7 +66,12 @@ pq["task_c"] = 10
 print("task_a" in pq)  # Output: True
 print(len(pq))         # Output: 3
 
-# Fetch the item with the minimum priority
+# Look at the minimum element without removing it
+min_key, min_priority = pq.peek_min()
+print(f"Current min: {min_key} with priority {min_priority}")
+# Output: Current min: task_b with priority 2
+
+# Fetch and remove the item with the minimum priority
 min_key, min_priority = pq.pop_min()
 print(f"Popped min: {min_key} with priority {min_priority}")
 # Output: Popped min: task_b with priority 2
@@ -107,6 +113,8 @@ Removes an arbitrary key from the structure. Returns `True` if successful, or `F
 
 #### Lookup & Utility Methods
 
+* **`peek_min() -> Tuple[K, P]`**
+Returns a `(key, priority)` tuple representing the item with the smallest priority value *without* removing it. Raises `IndexError` if the object is empty.
 * **`get(key: K) -> Optional[P]`**
 Returns the priority of the key, or `None` if the key does not exist.
 * **`contains(key: K) -> bool`**

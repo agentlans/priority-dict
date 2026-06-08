@@ -113,6 +113,22 @@ class PriorityDict(Generic[K, P]):
         else:
             self._sift_down(idx)
 
+    def peek_min(self) -> Tuple[K, P]:
+        """
+        Return the key and priority with the smallest priority without removing it.
+
+        Returns:
+            A tuple (key, priority) of the minimum element.
+
+        Raises:
+            IndexError: If the structure is empty.
+        """
+        if not self.heap:
+            raise IndexError("peek_min from empty PriorityDict")
+
+        priority, key = self.heap[0]
+        return (key, priority)
+
     def pop_min(self) -> Tuple[K, P]:
         """
         Remove and return the key with the smallest priority.
